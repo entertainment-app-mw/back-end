@@ -21,4 +21,12 @@ public class MoviesController : ControllerBase
 
         return Ok(movies);
     }
+    
+    [HttpGet("search/{query}")]
+    public async Task<IActionResult> SearchMovie(string query)
+    {
+        var movies = await _movieService.SearchMovieByTitle(query);
+
+        return Ok(movies);
+    }
 }
